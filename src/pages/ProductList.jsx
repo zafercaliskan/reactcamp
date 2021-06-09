@@ -9,7 +9,9 @@ export default function ProductList() {
     useEffect(() => {
         let productService = new ProductService()
         productService.getProducts().then(result => setProducts(result.data.data))
-    })
+    },[]) //Boş array atıyoruz. Aksi taktirde yine çalışır fakat sürekli istek atar.
+    //Nedeni de şu: React'in yaşam döngüsü için bir nesnenin her değişikliğe uğradığında yeniden render edilmesini istersek
+    //koyduğumuzun arrayin içerisine koyarak takibini yapabiliyoruz. Aksi taktirde sürekli elemanlar değiştiğinde sürekli istek atar.
     return (
         <div>
             <Table celled>
