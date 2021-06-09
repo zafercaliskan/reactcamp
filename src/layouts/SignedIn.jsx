@@ -1,7 +1,8 @@
 import React from 'react'
 import { Dropdown, Menu, Image } from 'semantic-ui-react'
 
-export default function SignedIn() {
+export default function SignedIn(props) { //Burada props olarak aldık.
+    //onClick={props.signOut} ile çıkış yapa tıklandığında navideki handleSignOut'u tetiklemiş oluruz.
     return (
         <div>
             <Menu.Item>
@@ -9,7 +10,7 @@ export default function SignedIn() {
                 <Dropdown pointing="top left" text="Zafer">                                  
                     <Dropdown.Menu>
                         <Dropdown.Item text="Bilgilerim" icon="info" />
-                        <Dropdown.Item text="Çıkış Yap" icon="sign-out" />                    
+                        <Dropdown.Item onClick={props.signOut} text="Çıkış Yap" icon="sign-out" />                    
                     </Dropdown.Menu>  
                 </Dropdown>
             </Menu.Item>
