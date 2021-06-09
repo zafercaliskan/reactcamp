@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import { useHistory } from 'react-router'
 import { Button, Container, Dropdown, Menu } from 'semantic-ui-react'
 import CartSummary from './CartSummary'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
 
 export default function Navi() {
+    const history=useHistory()
     //desructer yapıyoruz burada
     const [isAuthenticated, setIsAuthenticated] = useState(true) //default'u ya truedur yada falsedır.
     //state bu 'isAuthenticated', state'i değiştirecek method bu 'setIsAuthenticated', buda (false) initialState.
@@ -13,6 +15,7 @@ export default function Navi() {
         //Çıkış yapta bunun çalışması lazım. Yani alt component'e fonksiyon göndermek lazım.
         //Aşağıda signOut={handleSignOut} bu şekilde gönderiyoruz. Sanki SignedIn'in içerisinde signOut diye bir fonksiyon varda oda
         //bunu tetikliyor. Bunlara props(property) diyoruz. 
+        history.push("/") //Burada çıkış yapınca anasayfaya atacağız. Navigation historysine ulaşmamı sağlar.
     }
     function handleSignIn() {
         setIsAuthenticated(true)
