@@ -1,10 +1,7 @@
 import React from 'react'
-import { Button, Icon, Label } from 'semantic-ui-react'
 import ProductList from '../pages/ProductList'
-import { Grid, Image } from 'semantic-ui-react'
 
 import Categories from './Categories'
-import Navi from './Navi'
 import { Route } from 'react-router'
 import ProductDetails from '../pages/ProductDetails'
 import CartDetail from '../pages/CartDetail'
