@@ -1,18 +1,28 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import {   Dropdown } from 'semantic-ui-react'
+import { Dropdown, Label } from 'semantic-ui-react'
+
 export default function CartSummary() {
+
+    const { cartItems } = useSelector(state => state.cart)
+
     return (
         <div>
-            <Dropdown item text='Language'>
+            <Dropdown item text='sepetiniz'>
                 <Dropdown.Menu>
-                    <Dropdown.Item>Acer</Dropdown.Item>
-                    <Dropdown.Item>Asus</Dropdown.Item>
-                    <Dropdown.Item>Lenovo</Dropdown.Item>
-                    <Dropdown.Divider/>
+                    {
+                        cartItems.map((cartItem) => (
+                            <Dropdown.Item key={cartItem.product.id}>
+                                {cartItem.product.productName}
+                                <Label>{cartItem.quantity}</Label>
+                            </Dropdown.Item>
+                        ))
+                    }
+                    <Dropdown.Divider />
                     <Dropdown.Item as={NavLink} to="/cart">Sepete git</Dropdown.Item>
                     {/*Semanticde as={NavLink} sen bir NavLinksin. Yani react routerdaki Navlink ile çalış demiş oluyoruz.  */}
-                     {/*Semanticde to="/cart" ile nereye gideceğini söylüyoruz. */}
+                    {/*Semanticde to="/cart" ile nereye gideceğini söylüyoruz. */}
                 </Dropdown.Menu>
             </Dropdown>
         </div>
