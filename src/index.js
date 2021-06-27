@@ -4,9 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from './store/configureStore';
+import "react-toastify/dist/ReactToastify.min.css";
 
-ReactDOM.render(
-  <BrowserRouter><App /></BrowserRouter>, document.getElementById('root')
+
+const store = configureStore() //daha temiz kod yazmak için.
+ReactDOM.render( //provide bir component.  Component'e aparams ile parametre geçiyoruz. Tamamı bizim store'u nimetlerinden yararlanabilir.
+  <Provider store={store}> 
+    <BrowserRouter><App /></BrowserRouter>
+  </Provider>, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

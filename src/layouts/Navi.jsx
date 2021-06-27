@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router'
-import { Button, Container, Dropdown, Menu } from 'semantic-ui-react'
+import { Container, Menu } from 'semantic-ui-react'
 import CartSummary from './CartSummary'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
+import { useSelector } from 'react-redux'
 
 export default function Navi() {
-    const history=useHistory()
+
+    const { cartItems } = useSelector(state => state.cart)
+
+    const history = useHistory()
     //desructer yapıyoruz burada
     const [isAuthenticated, setIsAuthenticated] = useState(true) //default'u ya truedur yada falsedır.
     //state bu 'isAuthenticated', state'i değiştirecek method bu 'setIsAuthenticated', buda (false) initialState.
@@ -28,8 +32,9 @@ export default function Navi() {
                     <Menu.Item name='messages' />
 
                     <Menu.Menu position='right'>
-                        <CartSummary/>
-                        {isAuthenticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/> /*isAuthenticated true ise  SignedIn gösterir değilse SignedOut*/}          
+                        {cartItems.length > 0 && <CartSummary /> /*2 koşulda geçerliyse. CartSummary obje. cartItems.length 0dan büyükse render et demek. */} 
+
+                        {isAuthenticated ? <SignedIn signOut={handleSignOut} /> : <SignedOut signIn={handleSignIn} /> /*isAuthenticated true ise  SignedIn gösterir değilse SignedOut*/}
                     </Menu.Menu>
                 </Container>
             </Menu>
