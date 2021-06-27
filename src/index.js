@@ -9,9 +9,9 @@ import { configureStore } from './store/configureStore';
 import "react-toastify/dist/ReactToastify.min.css";
 
 
-const store = configureStore()
-ReactDOM.render(
-  <Provider store={store}>
+const store = configureStore() //daha temiz kod yazmak için.
+ReactDOM.render( //provide bir component.  Component'e aparams ile parametre geçiyoruz. Tamamı bizim store'u nimetlerinden yararlanabilir.
+  <Provider store={store}> 
     <BrowserRouter><App /></BrowserRouter>
   </Provider>, document.getElementById('root')
 );

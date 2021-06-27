@@ -32,7 +32,7 @@ export default function Navi() {
                     <Menu.Item name='messages' />
 
                     <Menu.Menu position='right'>
-                        {cartItems.length > 0 && <CartSummary />}
+                        {cartItems.length > 0 && <CartSummary /> /*2 koşulda geçerliyse. CartSummary obje. cartItems.length 0dan büyükse render et demek. */} 
 
                         {isAuthenticated ? <SignedIn signOut={handleSignOut} /> : <SignedOut signIn={handleSignIn} /> /*isAuthenticated true ise  SignedIn gösterir değilse SignedOut*/}
                     </Menu.Menu>

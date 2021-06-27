@@ -5,7 +5,7 @@ import { Dropdown, Label } from 'semantic-ui-react'
 
 export default function CartSummary() {
 
-    const { cartItems } = useSelector(state => state.cart)
+    const { cartItems } = useSelector(state => state.cart) //state'deki cartItems'ı çekeceğiz. Redux'a abone olduk.
 
     return (
         <div>

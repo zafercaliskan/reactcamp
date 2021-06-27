@@ -6,5 +6,4 @@ export function configureStore() {
     return createStore(rootReducer, devToolsEnhancer())
     
 }
-
-//redux devtools.
+// devToolsEnhancer() bu redux devtools'u kullanmamıza yardım edecek.

@@ -5,7 +5,9 @@
 
 export const ADD_TO_CART = "ADD_TO_CART"
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
-
+  
+//Burada aksiyonlar normalde typescript ile yazıyor olsaydık. Bunları class olarak oluşturabilirdik. Yada ngrxde class olarak oluşturuyoruz. 
+//Bunlar günümüzde çok popüler bir mimari patern olan Command-Query Separation (CQS)'in implementasyonu aslında. Biz bir fonsiyonu parametre olarak gönderiyoruz.
 export function addToCart(product) {
     //redux bana bir aksiyon yaptğın zaman bana bir obje gönder. 
     return { //Gönderiyorum alsana obje.
@@ -19,7 +21,7 @@ export function addToCart(product) {
 
 export function removeFromCart(product) {
     return { 
-        type: REMOVE_FROM_CART, 
-        payload: product
+        type: REMOVE_FROM_CART, //Gönderilen aksiyon
+        payload: product //state göndermek istediğin değer
     }
 }

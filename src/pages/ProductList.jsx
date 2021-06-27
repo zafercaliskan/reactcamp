@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 
 export default function ProductList() {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() //Aksiyonlara abone olmak. Hook. useDispatch ne demek?: 
+    //Aksiyonlarımızı fonksiyonlarımı çağırmak için dispacth ifasesi kullanırız. 
 
     //desructre
     const [products, setProducts] = useState([])
@@ -20,8 +21,8 @@ export default function ProductList() {
     //Nedeni de şu: React'in yaşam döngüsü için bir nesnenin her değişikliğe uğradığında yeniden render edilmesini istersek
     //koyduğumuzun arrayin içerisine koyarak takibini yapabiliyoruz. Aksi taktirde sürekli elemanlar değiştiğinde sürekli istek atar.
 
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product));
+    const handleAddToCart = (product) => { //değişken oluştur değişkene fonksiyon ata. 
+        dispatch(addToCart(product)); //addToCart aksiyonunu çağıracağız.
         toast.success(`${product.productName} sepete eklendi!`)
     }
 
@@ -49,7 +50,7 @@ export default function ProductList() {
                             <Table.Cell>{product.quantityPerUnit}</Table.Cell>
                             <Table.Cell>{product.category.categoryName}</Table.Cell>
                             <Table.Cell>
-                                <Button onClick={()=>handleAddToCart(product)}>Sepete ekle</Button>
+                                <Button onClick={()=>handleAddToCart(product) /* Direk fonk. çalıştırma fonk ata*/}>Sepete ekle</Button> 
                             </Table.Cell>
                         </Table.Row>
                     ))}
